@@ -1,0 +1,33 @@
+# -----------------
+# Set up packaging
+# -----------------
+
+# general cpack meta information
+set( CPACK_PACKAGE_VERSION_MAJOR ${BUILD_VERSION_MAJOR} )
+set( CPACK_PACKAGE_VERSION_MINOR ${BUILD_VERSION_MINOR} )
+set( CPACK_PACKAGE_VERSION_PATCH ${BUILD_VERSION_PATCH} )
+set( CPACK_PACKAGE_DESCRIPTION_SUMMARY "${CMAKE_PROJECT_NAME} Package")
+set( CPACK_PACKAGE_VENDOR "${CMAKE_VENDOR_NAME}" )
+if ( WIN32 )
+  set( CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}\\\\doc\\\\${CMAKE_PROJECT_NAME}-logo.bmp" )
+else ()
+  set( CPACK_PACKAGE_ICON "${CMAKE_CURRENT_SOURCE_DIR}//doc//${CMAKE_PROJECT_NAME}-logo.bmp" )
+endif ()
+set( CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}//doc//Copyright.txt" )
+set( CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}//README.md" )
+set( CPACK_PACKAGE_CONTACT "info@replace-with-domain.com" )
+
+# installation parameters
+set( CPACK_PACKAGE_INSTALL_DIRECTORY "${CMAKE_PROJECT_NAME} ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}" )
+set( CPACK_CREATE_DESKTOP_LINKS ${CMAKE_PROJECT_NAME} )
+set( CPACK_NSIS_MODIFY_PATH ON )
+set( CPACK_PACKAGE_EXECUTABLES "${CMAKE_PROJECT_NAME}app;${CMAKE_PROJECT_NAME}app" )
+
+# set up for source package
+set( CPACK_SOURCE_PACKAGE_FILENAME "${CMAKE_PROJECT_NAME} ${VERSION} Source" )
+set( CPACK_SOURCE_IGNORE_FILES "^${PROJECT_SOURCE_DIR}.*/.git/" )
+
+# install Microsoft runtime libraries
+include( InstallRequiredSystemLibraries )
+
+include( CPack )

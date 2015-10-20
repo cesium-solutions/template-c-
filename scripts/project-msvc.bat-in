@@ -1,0 +1,12 @@
+echo "Setting up Visual Studio Development environment"
+
+set @CMAKE_PROJECT_NAME@_BUILD=@PROJECT_BINARY_DIR@
+set PATH=%PATH%;%@CMAKE_PROJECT_NAME@_BUILD%\lib\Debug;%@CMAKE_PROJECT_NAME@_BUILD%\lib\Release;%@CMAKE_PROJECT_NAME@_BUILD%\bin\Debug;%@CMAKE_PROJECT_NAME@_BUILD%\bin\Release;@CMAKE_INSTALL_PREFIX@\bin
+
+rem Add more library paths here, e.g. external dependencies
+rem set PATH=%PATH%;@@CMAKE_PROJECT_NAME@_EXTERN_DIR@\bin.extern
+rem echo -- Added external dependencies to PATH
+
+call "@CMAKE_MSVS_VCVARS@"
+
+@CMAKE_MAKE_PROGRAM@ /useenv %@CMAKE_PROJECT_NAME@_BUILD%\@CMAKE_PROJECT_NAME@.sln

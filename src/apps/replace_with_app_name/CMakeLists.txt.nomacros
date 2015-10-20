@@ -1,0 +1,28 @@
+# Application specific variables.
+# Should be set for each app separately.
+set( APPNAME replace_with_app_name )
+
+set( ${APPNAME}_SOURCES
+     ${APPNAME}.cpp
+)
+set( ${APPNAME}_INCLUDES
+     ../..
+)
+set( ${APPNAME}_LIBRARIES
+     replace_with_library_name
+)
+
+# Generic commands, should not need to be changed,
+# but need to be executed for each application separately
+include_directories( ${${APPNAME}_INCLUDES} )
+add_executable( ${APPNAME} ${${APPNAME}_SOURCES} )
+source_group( \\ FILES ${${APPNAME}_SOURCES} )
+target_link_libraries( ${APPNAME} ${${APPNAME}_LIBRARIES} )
+set_target_properties( ${APPNAME} PROPERTIES
+                       DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX}
+)
+install( TARGETS ${APPNAME}
+         RUNTIME DESTINATION bin COMPONENT Runtime
+         LIBRARY DESTINATION lib COMPONENT RunTime
+         ARCHIVE DESTINATION lib COMPONENT Development
+)

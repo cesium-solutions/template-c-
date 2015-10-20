@@ -1,0 +1,61 @@
+/**
+
+  @mainpage replace_with_project_name Software
+
+  <h2>Detailed Design Document - replace_with_project_name Software</h2><p>
+
+  <h3>Document ID: </h3>
+
+  # Introduction
+
+    ## Purpose
+
+    This document describes the low-level application programming interfaces of the replace_with_project_name software libraries.
+
+    ## Intended Audience
+
+    This document is intended for software developers who:
+
+    - are maintainers of the replace_with_project_name Software
+
+    - may be developing specialized software applications that make use of some of the low-level
+      facilities of the replace_with_project_name Software
+
+    - are interested in the inner workings of the replace_with_project_name Software
+
+    Readers of this document are assumed to have in-depth knowledge of C++, a familarity with Object Oriented Design,
+    as well as some knowledge of the business domain of the replace_with_vendor_name products.
+
+    ## Applicable and Reference Documents
+
+      ### Applicable Documents
+
+      ### Reference Documents
+
+        @anchor rd_urd [RD1] replace_with_project_name User Requirements Document
+
+        @anchor rd_frd [RD2] replace_with_project_name Functional Requirements Document
+
+        @anchor rd_icd [RD3] replace_with_project_name Interface Control Document
+
+        @anchor rd_fsd [RD4] replace_with_project_name Functional Specification Document
+
+        @anchor rd_tsd [RD5] replace_with_project_name Technical Specification Document
+
+        @anchor rd_add [RD6] replace_with_project_name Architectural Design Document
+
+        @anchor rd_sdg [RD7] replace_with_project_name Software Developer's Guide
+
+    ## Document Overview
+
+    The high-level organization of the contents is subdivided into Doxygen "Modules".
+    Each of the sections in the Doxygen "Modules" section corresponds to the subsystems defined in @ref rd_add_ts "[RD6]"
+    for the Plaxis Mesher software, namely:
+
+    - replace_with_package_name Infrastructure
+
+    - Technical Specification (specifics of Data and Task Models)
+
+    A link to all of these sections is found in the Modules section.
+
+ */

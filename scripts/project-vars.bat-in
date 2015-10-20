@@ -1,0 +1,1 @@
+set PATH=@project_name_EXTERN_DIR@/bin.extern;%PATH%;@CMAKE_INSTALL_PREFIX@/bin

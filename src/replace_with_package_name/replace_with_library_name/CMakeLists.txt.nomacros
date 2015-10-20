@@ -1,0 +1,74 @@
+# Library specific variables.
+# Should be set for each library separately.
+set( LIBNAME replace_me_with_library_name )
+
+set( ${LIBNAME}_HEADERS_PUBLIC
+     ${LIBNAME}API.h
+     Template.hpp
+)
+set( ${LIBNAME}_HEADERS_PRIVATE
+)
+set( ${LIBNAME}_SOURCES
+     Template.cpp
+)
+set( ${LIBNAME}_INCLUDES
+
+)
+set( ${LIBNAME}_LIBRARIES
+     ${Boost_LIBRARIES}
+)
+set( ${LIBNAME}_GROUP
+     TemplateGroup
+)
+set( ${LIBNAME}_COMPILEFLAGS
+)
+set( ${LIBNAME}_INSTALLDIR
+     include/${LIBNAME}
+)
+
+# Generic commands based on above variables that shouldn't need to be changed
+# but should be executed for each library separately
+
+include_directories( ${${LIBNAME}_INCLUDES} )
+add_library(
+    ${LIBNAME}
+    ${${LIBNAME}_HEADERS_PUBLIC}
+    ${${LIBNAME}_HEADERS_PRIVATE}
+    ${${LIBNAME}_SOURCES}
+)
+source_group(
+    \\ FILES
+    ${${LIBNAME}_HEADERS_PUBLIC}
+    ${${LIBNAME}_HEADERS_PRIVATE}
+    ${${LIBNAME}_SOURCES}
+)
+target_link_libraries(
+    ${LIBNAME}
+    ${${LIBNAME}_LIBRARIES}
+)
+
+set_target_properties(
+    ${TARGETNAME} PROPERTIES
+    DEBUG_POSTFIX ${CMAKE_DEBUG_POSTFIX}
+)
+if ( ${LIBNAME}_GROUP )
+    set_target_properties(
+        ${TARGETNAME} PROPERTIES
+        FOLDER ${${LIBNAME}_GROUP}
+    )
+endif()
+if ( ${LIBNAME}_COMPILEFLAGS )
+    set_target_properties(
+        ${TARGETNAME} PROPERTIES
+        COMPILE_FLAGS ${${LIBNAME}_COMPILEFLAGS}
+    )
+endif()
+
+install( TARGETS ${LIBNAME}
+         RUNTIME DESTINATION bin COMPONENT Runtime
+         LIBRARY DESTINATION lib COMPONENT Runtime
+         ARCHIVE DESTINATION lib COMPONENT Development
+)
+install( FILES ${${LIBNAME}_HEADERS_PUBLIC} DESTINATION ${${LIBNAME}_INSTALLDIR} )
+
+add_subdirectory( test )
